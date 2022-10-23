@@ -1,0 +1,15 @@
+/*abstracts*/
+@use "scss/abstract/variables" as *;
+@use "scss/abstract/mixins" as *;
+
+/*base*/
+@import "scss/base/_resets.scss";
+@import "scss/base/_base.scss";
+
+/*----------Components-----------*/
+@import "../views/Home/home";
+@import "../views/Auth/auth";
+@import "../components/BackArrow/backArrow";
+@import "../views/Menu/menu";
+@import "../components/Popup/popup";
+@import "../components/Nav/nav";

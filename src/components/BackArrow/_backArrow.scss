@@ -1,0 +1,12 @@
+.backButton {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    z-index: 5;
+    & img {
+        filter: invert(1);
+        width: 40px;
+        height: 40px;
+    }
+}
