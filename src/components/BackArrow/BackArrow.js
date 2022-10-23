@@ -4,7 +4,7 @@ import arrow from "../../imgs/left-arrow-svgrepo-com.svg";
 const BackArrow = () => {
     const navigate = useNavigate();
     return (
-        <div className="backButton" onClick={() => navigate(-1)}>
+        <div className="backButton" onClick={() => navigate("/")}>
             <img src={arrow}></img>
         </div>
     );
