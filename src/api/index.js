@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: "http://localhost:5000/",
+    baseURL: "https://tired-jade-button.cyclic.app/",
 });
 
 API.interceptors.request.use((req) => {
