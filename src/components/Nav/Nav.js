@@ -4,7 +4,7 @@ import PopupCategory from "../Popup/CatPopup";
 const Nav = ({ categories, user }) => {
     const [popup, setPopup] = useState(false);
 
-    // const navRef = useRef(null);
+    const navRef = useRef(null);
     // const ulRef = useRef(null);
     // const isClicked = useRef(false);
     // const coords = useRef({
