@@ -59,16 +59,16 @@ const Nav = ({ categories, user }) => {
                     Añadir Categoría +
                 </button>
             ) : null}
-            {/* <nav className="navBar" ref={navRef}>
+            <nav className="navBar" ref={navRef}>
                 <PopupCategory trigger={popup} setPopup={setPopup} />
-                <ul id="catList" ref={ulRef}>
+                {/* <ul id="catList" ref={ulRef}>
                     {categories.map((cat) => (
                         <li className="itemButton" key={cat.categorieId}>
                             {cat.name}
                         </li>
                     ))}
-                </ul>
-            </nav> */}
+                </ul> */}
+            </nav>
         </div>
     );
 };
