@@ -44,42 +44,55 @@
                     justify-content: space-between;
                     align-items: center;
                     height: max-content;
-                    & h6 {
-                        font-size: 17px;
+                    & div {
                         width: 100%;
-                        margin-bottom: 10px;
-                    }
-                    & p {
-                        color: #424242;
-                        margin-bottom: 10px;
-                        font-size: 16px;
-
-                        width: 70%;
-                    }
-                    & span {
-                        font-size: 16px;
-
-                        width: 20%;
-                        text-align: center;
-                    }
-                    & .editDeleteButtons {
-                        width: 10%;
-                        height: 35px;
                         display: flex;
+                        flex-wrap: wrap;
                         justify-content: space-between;
-                        @include media-down(md) {
-                            width: 20%;
+                        align-items: center;
+                        height: max-content;
+                        & h6 {
+                            font-size: 17px;
+                            width: 100%;
+                            height: max-content;
                         }
-                        @include media-down(xs) {
-                            width: 50%;
+                        & p {
+                            color: #424242;
+                            font-size: 16px;
+                            height: max-content;
+                            width: 70%;
                         }
                         & span {
-                            height: 100%;
-                            width: max-content;
-                            padding: 5px 10px;
-                            cursor: pointer;
-                            color: #808080;
-                            border: 1px solid #808080;
+                            font-size: 16px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 20%;
+                            height: max-content;
+                        }
+
+                        & .editDeleteButtons {
+                            width: 10%;
+                            height: 35px;
+                            display: flex;
+                            justify-content: space-between;
+                            @include media-down(lg) {
+                                width: 25%;
+                            }
+                            @include media-down(md) {
+                                width: 40%;
+                            }
+                            @include media-down(xs) {
+                                width: 50%;
+                            }
+                            & span {
+                                height: 100%;
+                                width: max-content;
+                                padding: 5px 10px;
+                                cursor: pointer;
+                                color: #808080;
+                                border: 1px solid #808080;
+                            }
                         }
                     }
 
