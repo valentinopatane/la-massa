@@ -22,7 +22,7 @@ const Popup = (props) => {
         props.setPopup(false);
         dispatch(getCategories());
     }
-    return props.trigger ? (
+    return props.trigger && props.addId === props.catId ? (
         <div className="popup">
             <div className="popupInner">
                 <h5>Crear Opción: </h5>

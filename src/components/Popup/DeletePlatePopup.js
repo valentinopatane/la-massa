@@ -2,23 +2,29 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { deletePlate } from "../../controllers/categories";
 
-const DeletePlatePopup = (props) => {
+const DeletePlatePopup = ({
+    catId,
+    plateId,
+    deleteId,
+    setDeletePlatePopup,
+    trigger,
+}) => {
     const dispatch = useDispatch();
     function handleErase() {
-        dispatch(deletePlate(props.catId, props.plateId));
-        props.setDeletePlatePopup(false);
+        dispatch(deletePlate(catId, plateId));
+        setDeletePlatePopup(false);
     }
-    return props.trigger ? (
+    return trigger && deleteId === plateId ? (
         <div className="popup">
             <div className="popupInner">
                 <h5>¿Estás seguro?</h5>
                 <div className="sureButtons">
-                    <span className="sureButton" onClick={() => handleErase()}>
+                    <span className="sureButton" onClick={handleErase}>
                         Si
                     </span>
                     <span
                         className="notSureButton"
-                        onClick={() => props.setDeletePlatePopup(false)}
+                        onClick={() => setDeletePlatePopup(false)}
                     >
                         No
                     </span>

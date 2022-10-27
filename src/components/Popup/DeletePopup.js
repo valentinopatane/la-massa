@@ -8,7 +8,7 @@ const DeletePopup = (props) => {
         dispatch(deleteCategorie(props.catId));
         props.setDeletePopup(false);
     }
-    return props.trigger ? (
+    return props.trigger && props.deleteId === props.catId ? (
         <div className="popup">
             <div className="popupInner">
                 <h5>¿Estás seguro?</h5>
