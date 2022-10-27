@@ -93,126 +93,135 @@ const Menu = () => {
             <Nav categories={categories} user={user} />
 
             <section className="plateSection">
-                {categories.map((cat) => (
-                    <div className="plateContainer" key={cat.categorieId}>
-                        <h3>{cat.name}</h3>
-                        <ul>
-                            {cat.plates.map((plate) => (
-                                <li key={plate.plateId}>
-                                    <DeletePlatePopup
-                                        trigger={deletePlatePopup}
-                                        setDeletePlatePopup={
-                                            setDeletePlatePopup
-                                        }
-                                        catId={cat.categorieId}
-                                        plateId={plate.plateId}
-                                    />
-                                    {plate.plateId !== editId ? (
-                                        <>
-                                            <h6>{plate.title}</h6>
-                                            <p>{plate.description}</p>
-                                            <span>{plate.price}$</span>
-                                        </>
-                                    ) : (
-                                        <>
-                                            <input
-                                                className="inputEditPlateTitle"
-                                                onChange={handleChange}
-                                                value={formData.title}
-                                                name="title"
-                                            ></input>
-                                            <input
-                                                className="inputEditPlateDescription"
-                                                onChange={handleChange}
-                                                value={formData.description}
-                                                name="description"
-                                            ></input>
-                                            <input
-                                                className="inputEditPlatePrice"
-                                                onChange={handleChange}
-                                                value={formData.price}
-                                                name="price"
-                                            ></input>
-                                        </>
-                                    )}
-
-                                    {user ? (
-                                        <div className="editDeleteButtons">
-                                            {!edit ? (
-                                                <>
-                                                    <span
-                                                        onClick={() =>
-                                                            handleEdit(plate)
-                                                        }
-                                                    >
-                                                        Editar
-                                                    </span>
-                                                    <span
-                                                        onClick={() =>
-                                                            setDeletePlatePopup(
-                                                                true
-                                                            )
-                                                        }
-                                                    >
-                                                        Borrar
-                                                    </span>
-                                                </>
-                                            ) : plate.plateId === editId ? (
-                                                <>
-                                                    <span
-                                                        onClick={(e) =>
-                                                            handleSave(
-                                                                cat.categorieId,
-                                                                plate.plateId,
-                                                                e
-                                                            )
-                                                        }
-                                                    >
-                                                        Guardar
-                                                    </span>
-                                                    <span
-                                                        onClick={() => {
-                                                            setEdit(!edit);
-                                                            setEditId("");
-                                                        }}
-                                                    >
-                                                        Cancelar
-                                                    </span>
-                                                </>
-                                            ) : null}
-                                        </div>
-                                    ) : null}
-                                </li>
-                            ))}
-                        </ul>
-                        {user ? (
-                            <div className="addDeleteContainer">
-                                <button
-                                    className="addPlate"
-                                    onClick={() => setPopup(!popup)}
-                                >
-                                    Añadir opción a <strong>{cat.name}</strong>
-                                </button>
-                                <button
-                                    className="deletePlate"
-                                    onClick={handleErase}
-                                >
-                                    Eliminar categoría
-                                </button>
-                                <DeletePopup
-                                    trigger={deletePopup}
-                                    setDeletePopup={setDeletePopup}
-                                    catId={cat.categorieId}
-                                />
-                            </div>
-                        ) : null}
-                        <Popup
-                            trigger={popup}
-                            setPopup={setPopup}
-                            catId={cat.categorieId}
-                        />
+                {isLoading ? (
+                    <div className="spinnerContainer">
+                        <div className="spinner"></div>
                     </div>
-                ))}
+                ) : (
+                    categories.map((cat) => (
+                        <div className="plateContainer" key={cat.categorieId}>
+                            <h3>{cat.name}</h3>
+                            <ul>
+                                {cat.plates.map((plate) => (
+                                    <li key={plate.plateId}>
+                                        <DeletePlatePopup
+                                            trigger={deletePlatePopup}
+                                            setDeletePlatePopup={
+                                                setDeletePlatePopup
+                                            }
+                                            catId={cat.categorieId}
+                                            plateId={plate.plateId}
+                                        />
+                                        {plate.plateId !== editId ? (
+                                            <>
+                                                <h6>{plate.title}</h6>
+                                                <p>{plate.description}</p>
+                                                <span>{plate.price}$</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <input
+                                                    className="inputEditPlateTitle"
+                                                    onChange={handleChange}
+                                                    value={formData.title}
+                                                    name="title"
+                                                ></input>
+                                                <input
+                                                    className="inputEditPlateDescription"
+                                                    onChange={handleChange}
+                                                    value={formData.description}
+                                                    name="description"
+                                                ></input>
+                                                <input
+                                                    className="inputEditPlatePrice"
+                                                    onChange={handleChange}
+                                                    value={formData.price}
+                                                    name="price"
+                                                ></input>
+                                            </>
+                                        )}
+
+                                        {user ? (
+                                            <div className="editDeleteButtons">
+                                                {!edit ? (
+                                                    <>
+                                                        <span
+                                                            onClick={() =>
+                                                                handleEdit(
+                                                                    plate
+                                                                )
+                                                            }
+                                                        >
+                                                            Editar
+                                                        </span>
+                                                        <span
+                                                            onClick={() =>
+                                                                setDeletePlatePopup(
+                                                                    true
+                                                                )
+                                                            }
+                                                        >
+                                                            Borrar
+                                                        </span>
+                                                    </>
+                                                ) : plate.plateId === editId ? (
+                                                    <>
+                                                        <span
+                                                            onClick={(e) =>
+                                                                handleSave(
+                                                                    cat.categorieId,
+                                                                    plate.plateId,
+                                                                    e
+                                                                )
+                                                            }
+                                                        >
+                                                            Guardar
+                                                        </span>
+                                                        <span
+                                                            onClick={() => {
+                                                                setEdit(!edit);
+                                                                setEditId("");
+                                                            }}
+                                                        >
+                                                            Cancelar
+                                                        </span>
+                                                    </>
+                                                ) : null}
+                                            </div>
+                                        ) : null}
+                                    </li>
+                                ))}
+                            </ul>
+                            {user ? (
+                                <div className="addDeleteContainer">
+                                    <button
+                                        className="addPlate"
+                                        onClick={() => setPopup(!popup)}
+                                    >
+                                        Añadir opción a{" "}
+                                        <strong>{cat.name}</strong>
+                                    </button>
+                                    <button
+                                        className="deletePlate"
+                                        onClick={handleErase}
+                                    >
+                                        Eliminar categoría
+                                    </button>
+                                    <DeletePopup
+                                        trigger={deletePopup}
+                                        setDeletePopup={setDeletePopup}
+                                        catId={cat.categorieId}
+                                    />
+                                </div>
+                            ) : null}
+                            <Popup
+                                trigger={popup}
+                                setPopup={setPopup}
+                                catId={cat.categorieId}
+                            />
+                        </div>
+                    ))
+                )}
             </section>
         </main>
     );
